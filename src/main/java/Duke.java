@@ -28,16 +28,12 @@ public class Duke {
     }
 
     public static void Bye() {
-        Boolean stop = false;
-        while (stop == false) {
             String word = WordScan.nextLine();
             if (word.equals("bye")) {
                 System.out.println(separator + "Bye. Hope to see you again!\n" + separator);
-                stop = true;
             } else {
                 System.out.println(separator + word + "\n" + separator);
             }
-        }
     }
     public static void Level1() {
         Hello();
