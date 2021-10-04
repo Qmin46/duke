@@ -4,13 +4,8 @@ package main.java;
 import java.util.Scanner;
 
 public class Duke {
-    static Scanner WordScan = new Scanner(System.in);
+    static Scanner Scan = new Scanner(System.in);
     static String separator = "____________________________________________________________\n";
-    static String[] list = new String[100];
-    static int listCount = 0;
-    static Task[] Checklist = new Task[100];
-    static int TaskCount = 0;
-
 
     public static void WelcomeDuke() {
         String logo = " ____        _        \n"
@@ -28,7 +23,7 @@ public class Duke {
     }
 
     public static void Bye() {
-            String word = WordScan.nextLine();
+            String word = Scan.nextLine();
             if (word.equals("bye")) {
                 System.out.println(separator + "Bye. Hope to see you again!\n" + separator);
             } else {
