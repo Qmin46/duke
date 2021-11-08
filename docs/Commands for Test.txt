@@ -1,0 +1,16 @@
+list
+todo
+todo borrow book
+deadline return book /by Sunday
+deadline do homework /by no idea :-p
+deadline submit homework /by 2021-10-01 23:00
+list
+event meeting /at 6th Nov 2pm
+event meeting /at 2021-10-30 18:00
+list
+done 1
+done 2
+delete 1
+find homework
+list 
+bye
