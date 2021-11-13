@@ -36,9 +36,6 @@ expected outcome	: Here are the tasks in your list:
 description		: return error message as there is no date or time details after deadline description.
 expected outcome	: ☹ OOPS!!! The description of a todo cannot be empty.
 
-### deadline return book
-description		: return error message as there is no date or time details after deadline description.
-expected outcome	: Invalid input, the details is missing.
 
 ### deadline return book /by Sunday
 description		: to input task (return book) that need to be done before Sunday.
@@ -62,9 +59,6 @@ expected outcome	: Got it. I've added this task:
 description		: return error message as there is no date or time details after event description. 
 expected outcome	: ☹ OOPS!!! The description of an event cannot be empty.
 
-### event meeting
-description		: return error message as there is no date or time details after event description. 
-expected outcome	: Invalid input, the details is missing.
 
 ### event meeting /at Mon 2pm-4pm
 description		: to input task (event meeting) that start at 2pm and ends at 3pm.
