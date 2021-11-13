@@ -11,25 +11,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UiTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+    private final PrintStream original = System.out;
 
 
     @BeforeEach
     public void setUp() {
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(output));
     }
 
     @AfterEach
     public void tearDown() {
-        System.setOut(originalOut);
+        System.setOut(original);
     }
 
     @Test
     public void testShowLine(){
         Ui.showLine();
         assertEquals("____________________________________________________________",
-                outContent.toString().trim());
+                output.toString().trim());
     }
 }
 

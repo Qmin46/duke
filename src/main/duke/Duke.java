@@ -1,16 +1,16 @@
 package main.duke;
-import java.io.IOException;
-import java.io.File;
-import main.duke.ui.Ui;
-import main.duke.command.Parser;
 
+import main.duke.command.Parser;
+import main.duke.task.Storage;
+import main.duke.ui.Ui;
+
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * A duke class to run the chatbot.
+ */
 public class Duke {
-    /**
-     Ui: deals with interactions with the user
-     Storage: deals with loading tasks from the file and saving tasks in the file
-     Parser: deals with making sense of the user command
-     TaskList: contains the task list e.g., it has operations to add/delete tasks in the list
-     **/
 
     public static void Proceed() {
         Parser.Command();
@@ -18,6 +18,16 @@ public class Duke {
     }
 
     public static void RunDuke() {
+        try {
+            boolean isSuccess = false;
+            File StorageFile = Storage.openFile();
+           // Storage.ReadFileToArray(StorageFile);
+            isSuccess = true;
+
+        }catch (DukeException e) {
+            e.printErrMsg();
+        }
+
         Ui.WelcomeDuke();
         Ui.Greet();
     }
@@ -25,6 +35,18 @@ public class Duke {
     public static void main(String[] args) throws IOException {
         RunDuke();
         Proceed();
+
+        try {
+            Storage.writeToFile(Storage.openFile());
+        } catch (DukeException e) {
+            System.out.println("Failed to write to file");
+        }
+    }
+
+    public String reply(String input) {
+            Parser.Command();
+            return input;
     }
 }
+
 

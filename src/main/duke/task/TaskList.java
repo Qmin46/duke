@@ -1,8 +1,9 @@
 package main.duke.task;
 import java.util.ArrayList;
-import java.lang.String;
 
-
+/**
+ * A <code>TaskList</code> contains the task list, it has operations to add/delete tasks in the list, display the task in the list.
+ */
 public class TaskList {
 
     static String line = "____________________________________________________________\n";
@@ -100,10 +101,7 @@ public class TaskList {
         } else if (taskDisplay.size() == 0) {
             System.out.println(line + "Sorry, you don't have any task in your list!");
         } else {
-            Task task = taskDisplay.get(0);
             System.out.println(line + "There is no task found!");
-            System.out.println(line + input);
-            System.out.println(line + task.toString().toLowerCase());
         }
 
     }

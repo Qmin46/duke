@@ -1,5 +1,8 @@
 package main.duke.ui;
 
+/**
+ * A <code>TaskList</code> deals with interactions with the user.
+ */
 public class Ui {
 
     public static String line ="____________________________________________________________\n";
@@ -26,17 +29,18 @@ public class Ui {
         System.out.println(line + start + end + guide + line);
     }
 
-    /** Prints guidance. */
+    /** Display the commands available for the user. */
     public static void Guide(){
         System.out.println(line);
+        System.out.println("Here are the commands available: ");
         System.out.println("To view existing tasks:             list");
         System.out.println("To add a new to do job:             todo {description}");
         System.out.println("To add a new deadline:              deadline {description} /by {yyyy-MM-dd HHmm}");
-        System.out.println("To add a new event:                 event {description} /at {yyyy-MM-dd HHmm}");
-        System.out.println("To mark a task as completed:        done {taskSequence (in number)}");
-        System.out.println("To delete a task:                   delete {taskSequence (in number)}");
-        System.out.println("To search task by keyword:          find {keyword}");
-        System.out.println("To exit the chat bot:               bye");
+        System.out.println("To add a new event:                 event {description} /at {yyyy-MM-dd HHmm}{time} - {yyyy-MM-dd HHmm}{time}");
+        System.out.println("To mark a task as completed:        done {taskSequence (please have it in number)}");
+        System.out.println("To delete a task:                   delete {taskSequence (please have it in number)}");
+        System.out.println("To search task by keyword:          find {keyword (please have it in number)}");
+        System.out.println("To exit this chat bot:              bye");
         System.out.println(line);
     }
 

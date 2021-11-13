@@ -4,16 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-/*public class Event extends Task{
-    protected String at;
-    protected LocalDate date;
-    protected LocalTime time;
-
-   /* public Event(String description, String at) {
-        super(description);
-        this.at = at;
-    }*/
-
+/**
+ * A <code>Event</code> object stores a task with event.
+ * * Extends the <code>Task</code> class.
+ */
 public class Event extends Task {
     protected String at;
     protected LocalDate date;

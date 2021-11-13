@@ -14,4 +14,5 @@ public class DukeException extends Exception{
     public void printErrMsg() {
         System.out.println(errMsg);
     }
+
 }

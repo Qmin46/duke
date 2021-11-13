@@ -3,10 +3,9 @@ package main.duke.task;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import main.duke.command.Parser;
 
 /**
- * A <code>DeadLineTask</code> object stores a task with deadline.
+ * A <code>DeadLine</code> object stores a task with deadline.
  * * Extends the <code>Task</code> class.
  */
 public class Deadline extends Task{
@@ -47,11 +46,14 @@ public class Deadline extends Task{
             if (time != null) {
                 info = info + " " + time;
             }
-            assert false;
         }
         info = info + ")";
         return info;
     }
 
+    @Override
+    public String getTaskType() {
+        return "D";
+    }
 
 }

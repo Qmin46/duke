@@ -1,17 +1,18 @@
 package main.duke.command;
-import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import main.duke.task.TaskList;
-import main.duke.ui.Ui;
-import main.duke.task.ToDo;
+import main.duke.DukeExceptionMeaning;
 import main.duke.task.Deadline;
 import main.duke.task.Event;
-import main.duke.DukeExceptionMeaning;
+import main.duke.task.TaskList;
+import main.duke.task.ToDo;
+import main.duke.ui.Ui;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Scanner;
 
+/**
+ * A <code>Parser</code> deals with making sense of the user command.
+ */
 public class Parser {
     static Scanner in = new Scanner(System.in);
 
@@ -44,11 +45,7 @@ public class Parser {
                         String[] parts = input.substring(8).split("/by");
                         String[] dateTime = parts[1].trim().split(" ");
                         String[] split = dateTime[0].split("/");
-                        if (parts[0].trim().equals("")) {
-                            System.out.println(Ui.line + "☹ OOPS!!! The description of a deadline cannot be empty.\n" + Ui.line);
-                        }else if (parts[1].trim().equals("")) {
-                            System.out.println(Ui.line + "\nInvalid input, the details is missing.\n" + Ui.line);
-                        } else if (checkDateValidity(split)) {
+                        if (checkDateValidity(split)) {
                             LocalDate taskDate = formatDate(split);
                             if (dateTime.length == 2 && checkTimeValidity(split[1])) {
                                 LocalTime taskTime = formatTime(dateTime[1]);
@@ -68,17 +65,15 @@ public class Parser {
                                 TaskList.printTaskCount();
                                 System.out.println(Ui.line);
                         }
+                    } else if (input.length() < 9 || input.substring(8).trim().equals("")){
+                        System.out.println(Ui.line + "☹ OOPS!!! The description of a deadline cannot be empty.\n" + Ui.line);
                     }
                 } else if (input.contains("event") && (input.substring(0, 5)).equals("event")) {
                     if (input.contains("/at")) {
                         String[] parts = input.substring(5).split("/at");
                         String[] dateTime = parts[1].trim().split(" ");
                         String[] split = dateTime[0].split("/");
-                        if (parts[0].trim().equals("")) {
-                            System.out.println(Ui.line + "☹ OOPS!!! The description of an event cannot be empty.\n" + Ui.line);
-                        } else if (parts[1].trim().equals("")) {
-                            System.out.println(Ui.line + "\nInvalid input, the details is missing.\n" + Ui.line);
-                        } else if (checkDateValidity(split)) {
+                        if (checkDateValidity(split)) {
                                 LocalDate taskDate = formatDate(split);
                                 if (dateTime.length == 2 && checkTimeValidity(split[1])) {
                                     LocalTime taskTime = formatTime(dateTime[1]);
@@ -98,6 +93,8 @@ public class Parser {
                             TaskList.printTaskCount();
                             System.out.println(Ui.line);
                         }
+                    } else if (input.length() < 6 || input.substring(5).trim().equals("")){
+                        System.out.println(Ui.line + "☹ OOPS!!! The description of a event cannot be empty.\n" + Ui.line);
                     }
                 } else if (input.contains("done") && (input.substring(0, 4)).equals("done")) {
                     TaskList.markIndex(input);
@@ -126,7 +123,7 @@ public class Parser {
             int time = Integer.parseInt(timeInput);
             int hour = time/100;
             int min = time%100;
-            if (hour < 24 && hour > -1 && min < 60 && min > -1) {
+            if (hour < 24 && hour >= 0 && min < 60 && min >= 0) {
                 return true;
             } else {
                 return false;
@@ -136,7 +133,7 @@ public class Parser {
 
     public static LocalTime formatTime(String timeInput) {
         int time = Integer.parseInt(timeInput);
-        int hour = time/100;
+        int hour = time /100;
         int min = time%100;
         LocalTime taskTime = LocalTime.of(hour , min);
         return taskTime;
@@ -149,14 +146,14 @@ public class Parser {
             int day = Integer.parseInt(details[0].trim());
             int month = Integer.parseInt(details[1].trim());
             int year = Integer.parseInt(details[2].trim());
-            if (day > 31 || day < 1) {
-                return false;
-            } else if (month > 12 || month < 1) {
-                return false;
-            } else if (year < 0) {
-                return false;
-            } else {
+            if (day <= 31 || day >= 1) {
                 return true;
+            } else if (month <= 12 || month >= 1) {
+                return true;
+            } else if (year > 0) {
+                return true;
+            } else {
+                return false;
             }
         }
     }
@@ -166,16 +163,19 @@ public class Parser {
         if (day.length() == 1) {
             day = "0" + day;
         }
+        assert false;
         String month = details[1].trim();
         if (month.length() == 1) {
             month = "0" + month;
         }
+        assert false;
         String year = details[2].trim();
         if (year.length() < 4) {
             for (int i = year.length(); i < 4; i ++) {
                 year = "0" + year;
             }
         }
+        assert false;
         String newDateFormat = year + "-" + month + "-" + day;
         LocalDate taskDate = LocalDate.parse(newDateFormat);
         return taskDate;
