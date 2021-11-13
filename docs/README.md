@@ -1,7 +1,7 @@
 # Duke
 This is a chatbot which is build by using Java. 
 
-# User Guide
+## User Guide
 User will required to input their to-dos, deadline or event to their schedule. User can refer to the guidance for the template to be input.
 
 ## Features 
@@ -49,7 +49,7 @@ expected outcome	: Got it. I've added this task:
        			  [D][ ] do homework (by: no idea :-p)
      			  Now you have 3 tasks in the list.
 
-## deadline submit homework /by 2021-11-13 23:00
+### deadline submit homework /by 2021-11-13 23:00
 description		: to input task (submit homework) that need to be done before 13 November 2021, 11pm.
 expected outcome	: Got it. I've added this task: 
        			  [D][ ] submit homework (by: 13th of November 2021, 11pm)
